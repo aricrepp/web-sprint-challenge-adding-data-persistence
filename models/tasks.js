@@ -11,6 +11,10 @@ function find() {
     );
 }
 
+function findById(id) {
+  return db('task').where('id', id).first();
+}
+
 function add(task) {
   return db('task')
     .insert(task, 'id')

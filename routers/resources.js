@@ -27,4 +27,15 @@ router.get('/resources/:id', async (req, res, next) => {
   }
 });
 
+router.post('/resources', async (req, res, next) => {
+  try {
+    const newresource = await Resources.add(req.body);
+    // const newresource = await db('resources').where({ id }).first();
+
+    res.status(201).json(newresource);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

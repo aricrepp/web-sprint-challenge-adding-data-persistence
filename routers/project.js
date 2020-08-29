@@ -27,6 +27,17 @@ router.get('/projects/:id', async (req, res, next) => {
   }
 });
 
+router.post('/projects', async (req, res, next) => {
+  try {
+    const newProject = await Project.add(req.body);
+    // const newProject = await db('project').where({ id }).first();
+
+    res.status(201).json(newProject);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get('/projects/:id/resources', async (req, res, next) => {
   try {
     const resources = await Project.findResources(req.params.id);

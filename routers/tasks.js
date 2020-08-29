@@ -27,4 +27,15 @@ router.get('/tasks/:id', async (req, res, next) => {
   }
 });
 
+router.post('/tasks', async (req, res, next) => {
+  try {
+    const newProject = await Tasks.add(req.body);
+    // const newProject = await db('task').where({ id }).first();
+
+    res.status(201).json(newProject);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
