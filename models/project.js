@@ -11,7 +11,7 @@ function findById(id) {
 function findResources(projectID) {
   return db('project_resources as pr')
     .join('project as p', 'p.id', 'pr.project_id')
-    .join('resouces as r', 'r.id', 'pr.resouces_id')
+    .join('resources as r', 'r.id', 'pr.resources_id')
     .where('p.id', projectID)
     .select('p.name', 'p.description', 'r.name', 'r.description');
 }
